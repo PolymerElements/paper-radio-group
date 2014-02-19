@@ -1,0 +1,36 @@
+<!--
+Copyright 2013 The Toolkitchen Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+-->
+
+<link rel="import" href="../polymer-selector/polymer-selector.html">
+
+<polymer-element name="paper-radio-group" extends="polymer-selector">
+
+  <template>
+  
+    <style>
+  
+      ::content > paper-radio-button {
+        padding: 12px;
+      }
+    
+    </style>
+  
+    <shadow></shadow>
+    
+  </template>
+  
+  <script>
+  
+    Polymer('paper-radio-group', {
+      
+      selectedProperty: 'checked',
+      activateEvent: 'paper-radio-button-activate'
+      
+    });
+  
+  </script>
+  
+</polymer-element>
