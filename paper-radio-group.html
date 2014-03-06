@@ -6,11 +6,11 @@ license that can be found in the LICENSE file.
 
 <!--
 /**
- * @module Quantum Paper Elements
- */
-/**
+ * @group Quantum Paper Elements
+ *
  * `paper-radio-group` allows user to select only one radio button from a set.
- * Checking one radio button in a radio group unchecks all the others. Use
+ * Checking one radio button that belongs to a radio group unchecks any 
+ * previously checked radio button within the same group. Use
  * `selected` to get or set the selected radio button.
  *
  * Example:
@@ -21,8 +21,11 @@ license that can be found in the LICENSE file.
  *      <paper-radio-button name="large" label="Large"></paper-radio-button>
  *    </paper-radio-group>
  *
- * @class paper-radio-group
- * @author The Polymer Authors
+ * See <a href="paper-radio-button.html">paper-radio-button</a> for more
+ * information about `paper-radio-button`.
+ *
+ * @element paper-radio-group
+ * @homepage github.io
  */
 -->
 
@@ -33,6 +36,10 @@ license that can be found in the LICENSE file.
   <template>
   
     <style>
+    
+      :host {
+        display: inline-block;
+      }
   
       /*@polyfill :host > * */
       ::content > * {
