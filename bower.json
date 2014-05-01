@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "polymer": "Polymer/polymer#master",
-    "paper-radio-button": "Polymer/paper-radio-button#master"
+    "paper-radio-button": "Polymer/paper-radio-button#master",
+    "core-selector": "Polymer/core-selector#master"
   }
 }
