@@ -2,8 +2,9 @@
   "name": "paper-radio-group",
   "private": true,
   "dependencies": {
-    "polymer": "Polymer/polymer#master",
-    "paper-radio-button": "Polymer/paper-radio-button#master",
-    "core-selector": "Polymer/core-selector#master"
+    "core-layout": "Polymer/core-layout#master",
+    "core-selector": "Polymer/core-selector#master",
+    "font-roboto2": "Polymer/font-roboto2#master",
+    "paper-radio-button": "Polymer/paper-radio-button#master"
   }
 }
