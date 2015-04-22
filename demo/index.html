@@ -1,0 +1,68 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <title>paper-radio-group demo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../paper-radio-button/paper-radio-button.html">
+    <link rel="import" href="../paper-radio-group.html">
+
+    <link rel="stylesheet" href="../../paper-styles/demo.css">
+
+    <style is="x-style">
+      paper-radio-group.red paper-radio-button {
+        --paper-radio-button-checked-color: red;
+        --paper-radio-button-checked-ink-color: red;
+      }
+
+      paper-radio-button {
+        display: block;
+      }
+
+    </style>
+  </head>
+  <body>
+    <section>
+
+      <h4>Keep Wi-Fi on during sleep</h4>
+
+      <paper-radio-group selected="always">
+        <paper-radio-button name="always">Always</paper-radio-button>
+        <paper-radio-button name="pluggedin">Only when plugged in</paper-radio-button>
+        <paper-radio-button name="never">Never</paper-radio-button>
+      </paper-radio-group>
+
+    </section>
+
+    <br>
+
+    <section>
+
+      <h4>Wi-Fi frequency band</h4>
+
+      <paper-radio-group class="red" selected="5ghz">
+        <paper-radio-button name="auto">Auto</paper-radio-button>
+        <paper-radio-button name="disable" disabled>Disabled</paper-radio-button>
+
+        <paper-radio-button name="5ghz">5 GHz only</paper-radio-button>
+        <paper-radio-button name="2.4ghz">2.4 GHz only</paper-radio-button>
+      </paper-radio-group>
+
+    </section>
+
+  </body>
+</html>
