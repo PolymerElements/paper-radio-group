@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-selector/iron-selector.html">
 <link rel="import" href="../paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
 
 <!--
 `paper-radio-group` allows user to select only one radio button from a set.
@@ -57,8 +58,13 @@ information about `paper-radio-button`.
   Polymer({
     is: 'paper-radio-group',
 
+    behaviors: [
+      Polymer.IronA11yKeysBehavior
+    ],
+
     hostAttributes: {
-      role: 'radiogroup'
+      role: 'radiogroup',
+      tabindex: 0
     },
 
     properties: {
@@ -86,9 +92,9 @@ information about `paper-radio-button`.
       }
     },
 
-    listeners: {
-      // TODO: this can be replaced by <iron-a11y-keys> when it's ready.
-      keydown: '_onKeyDown'
+    keyBindings: {
+      'left up': '_selectPrevious',
+      'right down': '_selectNext',
     },
 
     _selectedChanged: function() {
@@ -99,16 +105,12 @@ information about `paper-radio-button`.
       });
     },
 
-    _onKeyDown: function(event) {
-      if (event.keyCode === 37 || event.keyCode == 38) {
-        // Up/Left key goes back.
-        this.selected = this._previousNode();
-      } else if (event.keyCode === 39 || event.keyCode == 40) {
-        // Down/Right key advances.
-        this.selected = this._nextNode();
-      } else {
-        event.preventDefault();
-      }
+    _selectNext: function() {
+      this.selected = this._nextNode();
+    },
+
+    _selectPrevious: function() {
+      this.selected = this._previousNode();
     },
 
     /**
