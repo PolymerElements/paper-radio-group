@@ -20,13 +20,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <link rel="import" href="../../paper-radio-button/paper-radio-button.html">
     <link rel="import" href="../paper-radio-group.html">
-
-    <link rel="stylesheet" href="../../paper-styles/demo.css">
+    <link rel="import" href="../../paper-styles/paper-styles.html">
+    <link rel="import" href="../../paper-styles/demo-pages.html">
 
     <style is="custom-style">
-      paper-radio-group.red paper-radio-button {
-        --paper-radio-button-checked-color: red;
-        --paper-radio-button-checked-ink-color: red;
+      .horizontal-section {
+        min-width: 200px;
+      }
+
+      paper-radio-button.blue {
+        --paper-radio-button-checked-color: var(--paper-light-blue-500);
+        --paper-radio-button-checked-ink-color: var(--paper-light-blue-500);
+        --paper-radio-button-unchecked-color: var(--paper-light-blue-900);
+        --paper-radio-button-unchecked-ink-color: var(--paper-light-blue-900);
+      }
+
+      paper-radio-button.red {
+        --paper-radio-button-checked-color: var(--paper-red-500);
+        --paper-radio-button-checked-ink-color: var(--paper-red-500);
+        --paper-radio-button-unchecked-color: var(--paper-red-900);
+        --paper-radio-button-unchecked-ink-color: var(--paper-red-900);
+      }
+
+      paper-radio-button.green {
+        --paper-radio-button-checked-color: var(--paper-green-500);
+        --paper-radio-button-checked-ink-color: var(--paper-green-500);
+        --paper-radio-button-unchecked-color: var(--paper-green-900);
+        --paper-radio-button-unchecked-ink-color: var(--paper-green-900);
+      }
+
+      paper-radio-button.orange {
+        --paper-radio-button-checked-color: var(--paper-orange-500);
+        --paper-radio-button-checked-ink-color: var(--paper-orange-500);
+        --paper-radio-button-unchecked-color: var(--paper-orange-900);
+        --paper-radio-button-unchecked-ink-color: var(--paper-orange-900);
       }
 
       paper-radio-button {
@@ -35,34 +62,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
   </head>
+
   <body>
-    <section>
+    <div class="horizontal center-justified layout">
+      <div>
+        <h4>Enabled</h4>
+        <div class="horizontal-section">
+          <paper-radio-group selected="c">
+            <paper-radio-button name="o">Oxygen</paper-radio-button>
+            <paper-radio-button name="c">Carbon</paper-radio-button>
+            <paper-radio-button name="h">Hydrogen</paper-radio-button>
+            <paper-radio-button name="n">Nitrogen</paper-radio-button>
+            <paper-radio-button name="ca">Calcium</paper-radio-button>
+          </paper-radio-group>
+        </div>
+      </div>
 
-      <h4>Keep Wi-Fi on during sleep</h4>
+      <div>
+        <h4>Disabled</h4>
+        <div class="horizontal-section">
+          <paper-radio-group selected="c">
+            <paper-radio-button name="o">Oxygen</paper-radio-button>
+            <paper-radio-button name="c">Carbon</paper-radio-button>
+            <paper-radio-button name="h" disabled>Hydrogen</paper-radio-button>
+            <paper-radio-button name="n" disabled>Nitrogen</paper-radio-button>
+            <paper-radio-button name="ca">Calcium</paper-radio-button>
+          </paper-radio-group>
+        </div>
+      </div>
 
-      <paper-radio-group selected="always">
-        <paper-radio-button name="always">Always</paper-radio-button>
-        <paper-radio-button name="pluggedin">Only when plugged in</paper-radio-button>
-        <paper-radio-button name="never">Never</paper-radio-button>
-      </paper-radio-group>
-
-    </section>
-
-    <br>
-
-    <section>
-
-      <h4>Wi-Fi frequency band</h4>
-
-      <paper-radio-group class="red" selected="5ghz">
-        <paper-radio-button name="auto">Auto</paper-radio-button>
-        <paper-radio-button name="disable" disabled>Disabled</paper-radio-button>
-
-        <paper-radio-button name="5ghz">5 GHz only</paper-radio-button>
-        <paper-radio-button name="2.4ghz">2.4 GHz only</paper-radio-button>
-      </paper-radio-group>
-
-    </section>
-
+      <div>
+        <h4>Color</h4>
+        <div class="horizontal-section">
+          <paper-radio-group selected="c">
+            <paper-radio-button name="o" class="blue">Oxygen</paper-radio-button>
+            <paper-radio-button name="c" class="red">Carbon</paper-radio-button>
+            <paper-radio-button name="h" class="orange">Hydrogen</paper-radio-button>
+            <paper-radio-button name="n" class="green">Nitrogen</paper-radio-button>
+            <paper-radio-button name="ca" class="blue">Calcium</paper-radio-button>
+          </paper-radio-group>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
