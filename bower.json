@@ -24,10 +24,11 @@
   "ignore": [],
   "dependencies": {
     "iron-selector": "PolymerElements/iron-selector#^0.9.0",
+    "iron-a11y-keys-behavior": "PolymerElements/iron-a11y-keys-behavior#^0.9.0",
     "polymer": "Polymer/polymer#^0.9.0"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester#^2.2.3",
+    "web-component-tester": "*",
     "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^0.9.0",
     "test-fixture": "PolymerElements/test-fixture#^0.9.0",
     "paper-radio-button": "PolymerElements/paper-radio-button#^0.9.0",
