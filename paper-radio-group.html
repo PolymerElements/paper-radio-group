@@ -41,6 +41,9 @@ information about `paper-radio-button`.
     :host {
       display: inline-block;
     }
+    :host(:focus) {
+        outline: none;
+    }
 
     :host ::content > * {
       padding: 12px;
@@ -64,7 +67,7 @@ information about `paper-radio-button`.
 
     hostAttributes: {
       role: 'radiogroup',
-      tabindex: 0
+      tabindex: -1
     },
 
     properties: {
@@ -83,6 +86,10 @@ information about `paper-radio-button`.
         type: String,
         value: 'checked'
       }
+    },
+
+    listeners: {
+      'focus': 'focus',
     },
 
     keyBindings: {
@@ -115,7 +122,7 @@ information about `paper-radio-button`.
      * Selects the previous item. If the previous item is disabled, then it is
      * skipped, and its previous item is selected
      */
-    selectPrevious: function() {
+    selectPrevious: function(event) {
       var length = this.items.length;
       var newIndex = Number(this._valueToIndex(this.selected));
 
@@ -124,13 +131,17 @@ information about `paper-radio-button`.
       } while (this.items[newIndex].disabled)
 
       this.select(this._indexToValue(newIndex));
+      if (event) {
+        /* Only for keypress events */
+        this.items[newIndex].focus();
+      }
     },
 
     /**
      * Selects the next item. If the next item is disabled, then it is
      * skipped, and its nexy item is selected
      */
-    selectNext: function() {
+    selectNext: function(event) {
       var length = this.items.length;
       var newIndex = Number(this._valueToIndex(this.selected));
 
@@ -139,6 +150,20 @@ information about `paper-radio-button`.
       } while (this.items[newIndex].disabled)
 
       this.select(this._indexToValue(newIndex));
+      if (event) {
+        /* Only for keypress events */
+        this.items[newIndex].focus();
+      }
+    },
+
+    /**
+     * Moves focus to the currently selected item
+     */
+    focus: function() {
+      var selected = this._valueToItem(this.selected)
+      if (selected) {
+        selected.focus();
+      }
     },
   });
 </script>
