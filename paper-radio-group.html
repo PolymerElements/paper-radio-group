@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-selector/iron-selectable.html">
 <link rel="import" href="../paper-radio-button/paper-radio-button.html">
 <link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 
 <!--
 `paper-radio-group` allows user to select only one radio button from a set.
@@ -59,7 +60,8 @@ information about `paper-radio-button`.
 
     behaviors: [
       Polymer.IronA11yKeysBehavior,
-      Polymer.IronSelectableBehavior
+      Polymer.IronSelectableBehavior,
+      Polymer.IronFormElementBehavior
     ],
 
     hostAttributes: {
@@ -90,12 +92,25 @@ information about `paper-radio-button`.
       selectable: {
         type: String,
         value: 'paper-radio-button'
+      },
+
+      /**
+       * Overriden from Polymer.IronFormElementBehavior
+       */
+      value: {
+        type: String,
+        notify: true,
+        computed: '_getValue(selected)'
       }
     },
 
     keyBindings: {
       'left up': 'selectPrevious',
       'right down': 'selectNext',
+    },
+
+    _getValue: function(selected) {
+        return selected;
     },
 
     /**
