@@ -21,9 +21,11 @@
   "ignore": [],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.1.0",
-    "iron-menu-behavior": "PolymerElements/iron-menu-behavior#^1.1.7"
+    "iron-menu-behavior": "PolymerElements/iron-menu-behavior#^1.1.7",
+    "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#^1.0.6"
   },
   "devDependencies": {
+    "iron-form": "PolymerElements/iron-form#^1.1.4",
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
     "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
