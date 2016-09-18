@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
 <link rel="import" href="../iron-menu-behavior/iron-menubar-behavior.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 <link rel="import" href="../paper-radio-button/paper-radio-button.html">
 
 <!--
@@ -75,7 +76,8 @@ Custom property | Description | Default
     is: 'paper-radio-group',
 
     behaviors: [
-      Polymer.IronMenubarBehavior
+      Polymer.IronMenubarBehavior,
+      Polymer.IronFormElementBehavior
     ],
 
     hostAttributes: {
@@ -120,6 +122,15 @@ Custom property | Description | Default
       allowEmptySelection: {
         type: Boolean,
         value: false
+      },
+
+      /**
+       * Overridden from Polymer.IronFormElementBehavior.
+       */
+      value: {
+        type: String,
+        notify: true,
+        computed: '_computeValueForForm(selected)'
       }
     },
 
@@ -158,6 +169,10 @@ Custom property | Description | Default
 
     _activateFocusedItem: function() {
       this._itemActivate(this._valueForItem(this.focusedItem), this.focusedItem);
+    },
+
+    _computeValueForForm: function(selected) {
+      return selected || null;
     },
 
     _onUpKey: function(event) {
