@@ -1,0 +1,111 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>paper-radio-group form tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../iron-test-helpers/mock-interactions.js"></script>
+    <link rel="import" href="../../iron-form/iron-form.html">
+    <link rel="import" href="../paper-radio-group.html">
+
+  </head>
+  <body>
+
+    <test-fixture id="FormSerialization">
+      <template>
+        <form is="iron-form">
+          <paper-radio-group name="radioGroup" selected="r1">
+            <paper-radio-button name="r1">r1</paper-radio-button>
+            <paper-radio-button name="r2">r2</paper-radio-button>
+            <paper-radio-button name="r3">r3</paper-radio-button>
+          </paper-radio-group>
+        </form>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="FormValidation">
+      <template>
+        <form is="iron-form">
+          <paper-radio-group name="radioGroup">
+            <paper-radio-button name="r1">r1</paper-radio-button>
+            <paper-radio-button name="r2">r2</paper-radio-button>
+            <paper-radio-button name="r3">r3</paper-radio-button>
+          </paper-radio-group>
+        </form>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="FormValidationAllowEmpty">
+      <template>
+        <form is="iron-form">
+          <paper-radio-group name="radioGroup" allow-empty-selection>
+            <paper-radio-button name="r1">r1</paper-radio-button>
+            <paper-radio-button name="r2">r2</paper-radio-button>
+            <paper-radio-button name="r3">r3</paper-radio-button>
+          </paper-radio-group>
+        </form>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('defaults', function() {
+        test('group in a form should serialize', function (done) {
+          var f = fixture('FormSerialization');
+          var g = f.querySelector("paper-radio-group");
+
+          // Needs to be async since the underlying iron-selector uses observeNodes.
+          Polymer.Base.async(function() {
+            var serialized = f.serialize();
+            expect(g.selected).to.be.equal("r1");
+            expect(serialized.radioGroup).to.be.equal("r1");
+            expect(Object.keys(serialized).length).to.be.equal(1);
+            done();
+          }, 1);
+        });
+
+        test('group in a form should validate', function (done) {
+          var f = fixture('FormValidation');
+          var g = f.querySelector("paper-radio-group");
+
+          Polymer.Base.async(function() {
+            expect(g.allowEmptySelection).to.not.be.ok;
+            expect(g.selected).to.not.be.ok;
+            expect(f.validate()).to.not.be.ok;
+
+            g.selected = "r1";
+            expect(g.selected).to.be.equal("r1");
+            expect(f.validate()).to.be.ok;
+            done();
+          }, 1);
+        });
+
+        test('group in a form should respect allowing empty selection', function (done) {
+          var f = fixture('FormValidationAllowEmpty');
+          var g = f.querySelector("paper-radio-group");
+
+          Polymer.Base.async(function() {
+            expect(g.selected).to.not.be.ok;
+            expect(f.validate()).to.be.equal(true);
+
+            g.selected = "r1";
+            expect(g.selected).to.be.equal("r1");
+            expect(f.validate()).to.be.equal(true);
+            done();
+          }, 1);
+        });
+      });
+    </script>
+  </body>
+</html>
