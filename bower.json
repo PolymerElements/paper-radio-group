@@ -1,6 +1,6 @@
 {
   "name": "paper-radio-group",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A group of material design radio buttons",
   "authors": [
     "The Polymer Authors"
@@ -23,14 +23,15 @@
     "polymer": "Polymer/polymer#^1.1.0",
     "iron-menu-behavior": "PolymerElements/iron-menu-behavior#^1.1.7",
     "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#^1.0.6",
-    "iron-validatable-behavior": "PolymerElements/iron-validatable-behavior#^1.1.1"
+    "iron-validatable-behavior": "PolymerElements/iron-validatable-behavior#^1.1.1",
+    "iron-a11y-keys-behavior": "PolymerElements/iron-a11y-keys-behavior#^1.0.0",
+    "paper-radio-button": "PolymerElements/paper-radio-button#^1.0.0"
   },
   "devDependencies": {
     "iron-form": "PolymerElements/iron-form#^1.1.4",
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
     "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
-    "paper-radio-button": "PolymerElements/paper-radio-button#^1.0.0",
     "paper-styles": "PolymerElements/paper-styles#^1.0.0",
     "test-fixture": "PolymerElements/test-fixture#^1.0.0",
     "web-component-tester": "^4.0.0",
