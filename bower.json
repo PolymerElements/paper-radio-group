@@ -34,6 +34,11 @@
     "web-component-tester": "^5.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#v1"
   },
+  "resolutions": {
+    "polymer": "2.0-preview",
+    "test-fixture": "custom-elements-v1",
+    "webcomponentsjs": "v1"
+  },
   "main": "paper-radio-group.html",
   "variants": {
     "1.x": {
