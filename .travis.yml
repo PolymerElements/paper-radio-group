@@ -1,8 +1,8 @@
 language: node_js
 sudo: required
 before_script:
-  - npm install -g bower polylint polymer-cli
-  - polymer install
+  - npm install -g bower polymer-cli@next
+  - polymer install --variants
 env:
   global:
     - secure: MERTTM+t9rMsIccJ4em6ocmNYm1w1r2Zy9qRxhdM1ya0xT2dAlV7UZY7t1jZ4MEdvqtTro1oEzfUr0zgD/mwBJUxLAB0RLRIbYAJEAfngaUUMgbbIgj3yLUZ/bZCvPtfhDPA1W/VsyldhUGCxojzgJthWgAoqWRj6jFX6X+QeWw=
