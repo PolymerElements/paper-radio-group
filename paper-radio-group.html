@@ -119,12 +119,6 @@ Custom property | Description | Default
       allowEmptySelection: {
         type: Boolean,
         value: false
-      },
-
-      disabled: {
-        type: Boolean,
-        reflectToAttribute: true,
-        observer: '_onDisableChanged',
       }
     },
 
@@ -185,13 +179,6 @@ Custom property | Description | Default
     _onRightKey: function(event) {
       Polymer.IronMenubarBehaviorImpl._onRightKey.apply(this, arguments);
       this._activateFocusedItem();
-    },
-
-    _onDisableChanged: function(disabled) {
-      if (disabled)
-        this.removeAttribute('tabindex');
-      else
-        this.tabindex = 0;
     }
   });
 </script>
