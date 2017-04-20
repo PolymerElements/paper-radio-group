@@ -11,6 +11,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
 <link rel="import" href="../iron-menu-behavior/iron-menubar-behavior.html">
+<link rel="import" href="../iron-validatable-behavior/iron-validatable-behavior.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 <link rel="import" href="../paper-radio-button/paper-radio-button.html">
 
 <!--
@@ -75,7 +77,9 @@ Custom property | Description | Default
     is: 'paper-radio-group',
 
     behaviors: [
-      Polymer.IronMenubarBehavior
+      Polymer.IronMenubarBehavior,
+      Polymer.IronFormElementBehavior,
+      Polymer.IronValidatableBehavior
     ],
 
     hostAttributes: {
@@ -115,11 +119,38 @@ Custom property | Description | Default
       },
 
       /**
+       * Overridden from Polymer.IronFormElementBehavior.
+       */
+      required: {
+        type: Boolean,
+        notify: true,
+        computed: '_computeRequiredForForm(allowEmptySelection)'
+      },
+
+      /**
+       * Overridden from Polymer.IronFormElementBehavior.
+       */
+      value: {
+        type: String,
+        notify: true,
+        computed: '_computeValueForForm(selected)'
+      },
+
+      /**
        * If true, radio-buttons can be deselected
        */
       allowEmptySelection: {
         type: Boolean,
         value: false
+      },
+
+      /**
+       * Overridden from Polymer.IronFormElementBehavior.
+       */
+      value: {
+        type: String,
+        notify: true,
+        computed: '_computeValueForForm(selected)'
       }
     },
 
@@ -160,6 +191,14 @@ Custom property | Description | Default
       this._itemActivate(this._valueForItem(this.focusedItem), this.focusedItem);
     },
 
+    _computeRequiredForForm: function(allowEmptySelection) {
+      return !allowEmptySelection;
+    },
+
+    _computeValueForForm: function(selected) {
+      return selected || null;
+    },
+
     _onUpKey: function(event) {
       this._focusPrevious();
       event.preventDefault();
@@ -180,6 +219,20 @@ Custom property | Description | Default
     _onRightKey: function(event) {
       Polymer.IronMenubarBehaviorImpl._onRightKey.apply(this, arguments);
       this._activateFocusedItem();
+    },
+
+    /**
+     * Implements validation via Polymer.IronValidatableBehavior. Considered
+     * valid if `allowEmptySelection` is `true` or it's `false` and there is
+     * a selected value.
+     *
+     * @method validate
+     * @param {string|number} value
+     * @returns `true` if `value` is valid
+     */
+    validate: function(value) {
+      var val = value || this.value;
+      return !!(typeof val === "string" && val) || !this.required;
     }
   });
 </script>
