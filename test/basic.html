@@ -42,6 +42,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </template>
     </test-fixture>
 
+    <test-fixture id="WithFalsyValueSelection">
+      <template>
+        <paper-radio-group required selected="">
+          <paper-radio-button name="">No</paper-radio-button>
+          <paper-radio-button name="a_value">Yes</paper-radio-button>
+        </paper-radio-group>
+      </template>
+    </test-fixture>
+
     <test-fixture id="WithDisabled">
       <template>
         <paper-radio-group selected="r1">
@@ -188,6 +197,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               expect(items[2].checked).to.be.equal(false);
               done();
             }, 1);
+            MockInteractions.tap(items[0]);
+          }, 1);
+        });
+
+        test('clicking the selected item should not deselect with falsy values', function (done) {
+          var g = fixture('WithFalsyValueSelection');
+          MockInteractions.focus(g);
+
+          // Needs to be async since the underlying iron-selector uses observeNodes.
+          Polymer.Base.async(function() {
+            var items = g.items;
+
+            expect(items[0].checked).to.be.equal(true);
+
+            // The selection should not change, but wait for a little bit just
+            // in case it would and an event would be fired.
+            setTimeout(function() {
+              expect(items[0].checked).to.be.equal(true);
+              expect(items[1].checked).to.be.equal(false);
+              done();
+            }, 1);
+
             MockInteractions.tap(items[0]);
           }, 1);
         });
