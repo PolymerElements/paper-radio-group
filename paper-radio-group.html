@@ -142,14 +142,17 @@ Custom property | Description | Default
           if (this.allowEmptySelection) {
             value = '';
           } else {
-            if (oldItem)
+            if (oldItem) {
               oldItem.checked = true;
+            }
+
             return;
           }
         }
 
-        if (oldItem)
+        if (oldItem) {
           oldItem.checked = false;
+        }
       }
 
       Polymer.IronSelectableBehavior.select.apply(this, [value]);
