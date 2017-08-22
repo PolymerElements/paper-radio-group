@@ -17,13 +17,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../paper-radio-button/paper-radio-button.html">
-    <link rel="import" href="../paper-radio-group.html">
+    <script type="module" src="../../iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../../iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="../../paper-radio-button/paper-radio-button.js"></script>
+    <script type="module" src="../paper-radio-group.js"></script>
   </head>
   <body unresolved>
-    <custom-style>
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
         .vertical-section-container {
           max-width: 500px;
@@ -33,9 +44,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           align-self: center;
         }
       </style>
-    </custom-style>
+    </custom-style>`;
 
-    <div class="vertical-section-container centered">
+document.body.appendChild($_documentContainer);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
       <h3>A paper-radio-group allows only one item to be selected</h3>
       <demo-snippet class="centered-demo">
         <template>
@@ -43,7 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <paper-radio-group aria-labelledby="label1">
             <paper-radio-button name="a">allosaurus</paper-radio-button>
             <paper-radio-button name="b">brontosaurus</paper-radio-button>
-            <paper-radio-button name="d" disabled>diplodocus</paper-radio-button>
+            <paper-radio-button name="d" disabled="">diplodocus</paper-radio-button>
           </paper-radio-group>
         </template>
       </demo-snippet>
@@ -55,7 +72,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <paper-radio-group selected="b" aria-labelledby="label2">
             <paper-radio-button name="a">allosaurus</paper-radio-button>
             <paper-radio-button name="b">brontosaurus</paper-radio-button>
-            <paper-radio-button name="d" disabled>diplodocus</paper-radio-button>
+            <paper-radio-button name="d" disabled="">diplodocus</paper-radio-button>
           </paper-radio-group>
         </template>
       </demo-snippet>
@@ -64,13 +81,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <demo-snippet class="centered-demo">
         <template>
           <label id="label3">Dinosaurs:</label>
-          <paper-radio-group selected="b" allow-empty-selection aria-labelledby="label3">
+          <paper-radio-group selected="b" allow-empty-selection="" aria-labelledby="label3">
             <paper-radio-button name="a">allosaurus</paper-radio-button>
             <paper-radio-button name="b">brontosaurus</paper-radio-button>
-            <paper-radio-button name="d" disabled>diplodocus</paper-radio-button>
+            <paper-radio-button name="d" disabled="">diplodocus</paper-radio-button>
           </paper-radio-group>
         </template>
       </demo-snippet>
-    </div>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
   </body>
 </html>
