@@ -64,7 +64,6 @@ interface PaperRadioGroupElement extends Polymer.Element, Polymer.IronMenubarBeh
    * Overriden from Polymer.IronSelectableBehavior
    */
   selectedAttribute: string|null|undefined;
-  hostAttributes: object|null;
 
   /**
    * If true, radio-buttons can be deselected
