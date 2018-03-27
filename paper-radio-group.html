@@ -132,24 +132,27 @@ Custom property | Description | Default
         return;
       }
 
-      if (this.selected) {
+      if ( (this.selected !== undefined) && (this.selected !== null)) {
         var oldItem = this._valueToItem(this.selected);
 
-        if (this.selected == value) {
+        if (this.selected === value) {
           // If deselecting is allowed we'll have to apply an empty selection.
           // Otherwise, we should force the selection to stay and make this
           // action a no-op.
           if (this.allowEmptySelection) {
             value = '';
           } else {
-            if (oldItem)
+            if (oldItem) {
               oldItem.checked = true;
+            }
+
             return;
           }
         }
 
-        if (oldItem)
+        if (oldItem) {
           oldItem.checked = false;
+        }
       }
 
       Polymer.IronSelectableBehavior.select.apply(this, [value]);
