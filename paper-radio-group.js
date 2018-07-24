@@ -53,7 +53,6 @@ Custom property | Description | Default
 
 @group Paper Elements
 @element paper-radio-group
-@hero hero.svg
 @demo demo/index.html
 */
 Polymer({
