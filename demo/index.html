@@ -16,43 +16,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    <script type="module" src="../../iron-demo-helpers/demo-snippet.js"></script>
-    <script type="module" src="../../iron-demo-helpers/demo-pages-shared-styles.js"></script>
-    <script type="module" src="../../paper-radio-button/paper-radio-button.js"></script>
-    <script type="module" src="../paper-radio-group.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
   </head>
   <body unresolved>
-    <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
     <script type="module">
-const $_documentContainer = document.createElement('template');
+      import {html} from '@polymer/polymer/lib/utils/html-tag.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/paper-radio-button/paper-radio-button.js';
+      import '../paper-radio-group.js';
 
-$_documentContainer.innerHTML = `<custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-        .vertical-section-container {
-          max-width: 500px;
-        }
+      const template = html`
+        <custom-style>
+          <style is="custom-style" include="demo-pages-shared-styles">
+            .vertical-section-container {
+              max-width: 500px;
+            }
 
-        label {
-          align-self: center;
-        }
-      </style>
-    </custom-style>`;
+            label {
+              align-self: center;
+            }
+          </style>
+        </custom-style>
+      `;
+      document.body.appendChild(template.content);
+    </script>
 
-document.body.appendChild($_documentContainer.content);
-</script>
-
-    <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+    <div class="vertical-section-container centered">
       <h3>A paper-radio-group allows only one item to be selected</h3>
       <demo-snippet class="centered-demo">
         <template>
@@ -88,9 +78,6 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
           </paper-radio-group>
         </template>
       </demo-snippet>
-    </div>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+    </div>
   </body>
 </html>
