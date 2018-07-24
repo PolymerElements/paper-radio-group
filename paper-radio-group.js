@@ -7,6 +7,15 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
+import '@polymer/polymer/polymer-legacy.js';
+
+import '@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
+import { IronMenubarBehavior, IronMenubarBehaviorImpl } from '@polymer/iron-menu-behavior/iron-menubar-behavior.js';
+import '@polymer/paper-radio-button/paper-radio-button.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { IronSelectableBehavior } from '@polymer/iron-selector/iron-selectable.js';
+
 /**
 Material design: [Radio button](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-radio-button)
 
@@ -47,19 +56,6 @@ Custom property | Description | Default
 @hero hero.svg
 @demo demo/index.html
 */
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
-import '@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
-import { IronMenubarBehavior, IronMenubarBehaviorImpl } from '@polymer/iron-menu-behavior/iron-menubar-behavior.js';
-import '@polymer/paper-radio-button/paper-radio-button.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-import { IronSelectableBehavior } from '@polymer/iron-selector/iron-selectable.js';
 Polymer({
   _template: html`
     <style>
