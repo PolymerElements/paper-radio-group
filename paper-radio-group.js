@@ -53,11 +53,11 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--paper-radio-group-item-padding` | The padding of the item | `12px`
 
-@group Paper Elements
 @element paper-radio-group
 @demo demo/index.html
 */
 Polymer({
+  /** @override */
   _template: html`
     <style>
       :host {
